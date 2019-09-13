@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <title>User Manager</title>
+    </head>
+    <body>
+    <div align="center">
+        <h1>User List</h1>
+        <a href="new">Create New User</a>
+        <br/><br/>
+        <div class="padding">
+            <table class="table table-striped padding">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Edit action</th>
+                    <th scope="col">Delete action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user : ${userList}">
+                    <td class="row" th:text="${user.id}"/>
+                    <td class="row" th:text="${user.firstName}"/>
+                    <td class="row" th:text="${user.lastName}"/>
+                    <td class="row">
+                        <button class="btn btn-info" type="button" th:onclick="'window.location.href = \'/edit/' + ${user.id} + '\''">Edit</button>
+                    </td>
+                    <td class="row">
+                        <button class="btn btn-danger" type="button"
+                                th:onclick="'window.location.href = \'/delete/' + ${user.id} + '\''">Delete</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </body>
+</html>
